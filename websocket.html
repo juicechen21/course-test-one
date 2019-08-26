@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <meta charset="utf-8">
+   <title>WebSocket</title>
+    
+   <style>
+      div{
+         width: 200px;
+         height: 100px;
+         border: 1px solid #0a0a0a;
+         overflow: auto;
+         overflow-x:hidden;
+         overflow-y:scroll;
+      }
+      div>dd{
+         width: 100%;
+         height: 20px;
+         text-align: left;
+      }
+   </style>
+        
+   </head>
+   <body>
+   
+      
+	  <input type="text"/>
+	  <button>发送数据</button>
+      <div>
+      </div>
+      
+   </body>
+
+   <script>
+
+       //var url='ws://echo.websocket.org';
+       var url='ws://47.94.102.71:99';
+
+      //var socket = new WebSocket('ws://echo.websocket.org');
+
+      var socket = new WebSocket(url);
+
+      var div = document.querySelector('div');
+      var button = document.querySelector('button');
+      var input = document.querySelector('input');
+
+      socket.addEventListener('open',function () {
+         alert('成功。。。');
+          //socket.send('type=add&ming=小黄');
+      })
+
+
+
+      button.addEventListener('click',function () {
+          //alert(input.value);
+          socket.send('nr='+input.value+'&key=all');
+
+          //socket.send(input.value);
+      })
+
+//      socket.addEventListener('message',function (e) {
+//          console.log(e);
+//          //div.innerText = '<p>'+e.data+'</p>';
+//      })
+
+      socket.onmessage = function (e) {
+          console.log(e);
+//          var node=document.createElement("dd");
+//          var textnode=document.createTextNode(e.data);
+//          node.appendChild(textnode);
+//          div.appendChild(node);
+
+      }
+
+
+
+
+   </script>
+</html>
