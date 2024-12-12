@@ -1,5 +1,5 @@
 ## course-test-one
-测试版本库
+第一个测试版本库 websocket demo
 ## git
 
 ```bash
